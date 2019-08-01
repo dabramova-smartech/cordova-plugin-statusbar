@@ -131,6 +131,14 @@ static const void *kStatusBarStyle = &kStatusBarStyle;
         [self _backgroundColorByHexString:[self settingForKey:setting]];
     }
 
+    setting = @"StatusBarOverlaysWebView";
+    if ([self settingForKey:setting]) {
+        self.statusBarOverlaysWebView = [(NSNumber*)[self settingForKey:setting] boolValue];
+        if (self.statusBarOverlaysWebView) {
+            [self resizeWebView];
+        }
+    }
+
     setting  = @"StatusBarStyle";
     if ([self settingForKey:setting]) {
         [self setStatusBarStyle:[self settingForKey:setting]];
